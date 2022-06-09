@@ -43,11 +43,10 @@ for file in files:
                 print("#", cond, '('+result+')', email)
 
             f.close()
-        
+
         except Exception as e:
             print("Error", e)
             # return False
-
 
     else:
         print("X", "Not TXT =>", filepath)
