@@ -11,6 +11,7 @@ mxf = 100000
 allEmails = []
 inputs_path = "./inputs"
 files = os.listdir(inputs_path)
+files.sort()
 print(files)
 
 # for file in files:
