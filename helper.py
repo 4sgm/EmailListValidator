@@ -72,3 +72,16 @@ def saveOutputs(fc, email):
     frw = open("./outputs/valid " + fc + ".csv", "a")
     frw.write(email + "\n")
     frw.close()
+
+
+def addEmail2List(email):
+    frw = open("all.txt", "a")
+    frw.write(email + "\n")
+    frw.close()
+
+
+def isDuplicate(email):
+    frw = open("all.txt", "r")
+    mm = email in frw.read()
+    frw.close()
+    return mm

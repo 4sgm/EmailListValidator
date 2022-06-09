@@ -1,10 +1,9 @@
 import os
 import sys
-from helper import check, saveOutputs, saveResult
+from helper import addEmail2List, check, isDuplicate, saveOutputs, saveResult
 
 
 mxf = 100000
-allEmails = []
 inputs_path = "./inputs"
 files = os.listdir(inputs_path)
 files.sort()
@@ -18,7 +17,6 @@ for file in files:
     i += 1
     filepath = inputs_path + '/' + file
     if i in range(start, end):
-        print('**', i, file)
         filename, file_extension = os.path.splitext(filepath)
         file_extension = file_extension.lower()
         if file_extension == ".txt":
@@ -28,11 +26,11 @@ for file in files:
                     email = str(email).replace(' ', '').replace('\n', '')
                     isCorrect = False
                     result = ''
-                    if email in allEmails:
+                    if isDuplicate(email):
                         isCorrect = False
                         result, count = saveResult(isCorrect)
                     else:
-                        allEmails.append(email)
+                        addEmail2List(email)
                         isCorrect = check(email)
                         result, count = saveResult(isCorrect)
 
