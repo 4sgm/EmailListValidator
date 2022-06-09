@@ -2,11 +2,6 @@ import os
 import sys
 from helper import check, saveOutputs, saveResult
 
-#
-fres = open("result.txt", "w")
-fres.write("0/0")
-fres.close()
-
 
 mxf = 100000
 allEmails = []
