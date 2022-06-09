@@ -9,7 +9,7 @@ inputs_path = "./inputs"
 files = os.listdir(inputs_path)
 files.sort()
 start = int(sys.argv[1])
-end = int(sys.argv[2])
+end = int(sys.argv[2])+1
 
 
 i = 0
