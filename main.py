@@ -18,6 +18,7 @@ for file in files:
     i += 1
     filepath = inputs_path + '/' + file
     if i in range(start, end):
+        print('**', i, file)
         filename, file_extension = os.path.splitext(filepath)
         file_extension = file_extension.lower()
         if file_extension == ".txt":
