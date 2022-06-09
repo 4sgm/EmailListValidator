@@ -15,33 +15,39 @@ for file in files:
     filename, file_extension = os.path.splitext(filepath)
     file_extension = file_extension.lower()
     if file_extension == ".txt":
-        f = open(filepath, "r")
-        for email in f:
-            email = str(email).replace(' ', '').replace('\n', '')
-            isCorrect = check(email)
-            result, count = saveResult(isCorrect)
+        try:
+            f = open(filepath, "r")
+            for email in f:
+                email = str(email).replace(' ', '').replace('\n', '')
+                isCorrect = check(email)
+                result, count = saveResult(isCorrect)
 
-            if isCorrect:
-                if count % 100000 == 0:
-                    # new file
-                    name = str((int(count/mxf)-1) * mxf)
-                    name += "-"
-                    name += str((int(count/mxf)) * mxf)
-                else:
-                    # append
-                    name = str((int(count/mxf))*mxf)
-                    name += "-"
-                    name += str((int(count/mxf)+1)*mxf)
+                if isCorrect:
+                    if count % 100000 == 0:
+                        # new file
+                        name = str((int(count/mxf)-1) * mxf)
+                        name += "-"
+                        name += str((int(count/mxf)) * mxf)
+                    else:
+                        # append
+                        name = str((int(count/mxf))*mxf)
+                        name += "-"
+                        name += str((int(count/mxf)+1)*mxf)
 
-                saveOutputs("[" + name + "]", email)
+                    saveOutputs("[" + name + "]", email)
 
-            #
-            cond = str(isCorrect)
-            if isCorrect:
-                cond = cond + " "
-            print("#", cond, '('+result+')', email)
+                #
+                cond = str(isCorrect)
+                if isCorrect:
+                    cond = cond + " "
+                print("#", cond, '('+result+')', email)
 
-        f.close()
+            f.close()
+        
+        except Exception as e:
+            print("Error", e)
+            # return False
+
 
     else:
         print("X", "Not TXT =>", filepath)
