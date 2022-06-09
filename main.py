@@ -1,12 +1,14 @@
 import os
 import sys
 from helper import addEmail2List, check, isDuplicate, saveOutputs, saveResult
+from natsort import natsorted
 
 
 mxf = 100000
 inputs_path = "./inputs"
 files = os.listdir(inputs_path)
-files.sort()
+files = natsorted(files)
+
 start = int(sys.argv[1])
 end = int(sys.argv[2])+1
 
