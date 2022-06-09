@@ -8,6 +8,7 @@ fres.close()
 
 
 mxf = 100000
+allEmails = []
 inputs_path = "./inputs"
 files = os.listdir(inputs_path)
 for file in files:
@@ -19,28 +20,35 @@ for file in files:
             f = open(filepath, "r")
             for email in f:
                 email = str(email).replace(' ', '').replace('\n', '')
-                isCorrect = check(email)
-                result, count = saveResult(isCorrect)
+                isCorrect = False
+                result = ''
+                if email in allEmails:
+                    isCorrect = False
+                    result, count = saveResult(isCorrect)
+                else:
+                    allEmails.append(email)
+                    isCorrect = check(email)
+                    result, count = saveResult(isCorrect)
 
-                if isCorrect:
-                    if count % 100000 == 0:
-                        # new file
-                        name = str((int(count/mxf)-1) * mxf)
-                        name += "-"
-                        name += str((int(count/mxf)) * mxf)
-                    else:
-                        # append
-                        name = str((int(count/mxf))*mxf)
-                        name += "-"
-                        name += str((int(count/mxf)+1)*mxf)
+                    if isCorrect:
+                        if count % 100000 == 0:
+                            # new file
+                            name = str((int(count/mxf)-1) * mxf)
+                            name += "-"
+                            name += str((int(count/mxf)) * mxf)
+                        else:
+                            # append
+                            name = str((int(count/mxf))*mxf)
+                            name += "-"
+                            name += str((int(count/mxf)+1)*mxf)
 
-                    saveOutputs("[" + name + "]", email)
+                        saveOutputs("[" + name + "]", email)
 
                 #
                 cond = str(isCorrect)
                 if isCorrect:
                     cond = cond + " "
-                print("#", cond, '('+result+')', email)
+                print("#", cond, '(' + result + ')', email)
 
             f.close()
 
