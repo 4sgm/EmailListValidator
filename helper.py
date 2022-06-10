@@ -125,35 +125,3 @@ def validation(file, email, arg):
     if isCorrect:
         cond = cond + " "
     print("#", cond, '(' + result + ')', email, file)
-
-
-def send_mail(subject, text, files=None):
-
-    send_from = "rasoul707@mmm.com"
-    send_to = "r.ahmadifar.1377@gmail.com"
-
-    msg = MIMEMultipart()
-    msg['From'] = send_from
-    msg['To'] = COMMASPACE.join(send_to)
-    msg['Date'] = formatdate(localtime=True)
-    msg['Subject'] = subject
-
-    msg.attach(MIMEText(text))
-
-    # for f in files or []:
-    #     with open(f, "rb") as fil:
-    #         part = MIMEApplication(
-    #             fil.read(),
-    #             Name=basename(f)
-    #         )
-    #     # After the file is closed
-    #     part['Content-Disposition'] = 'attachment; filename="%s"' % basename(f)
-    #     msg.attach(part)
-
-    smtp = smtplib.SMTP('smtp.gmail.com', 587)
-    # smtp.ehlo()
-    smtp.starttls()
-    smtp.login("ahmadifarr77@gmail.com", "811RaF496029#!%$")
-
-    smtp.sendmail(send_from, send_to, msg.as_string())
-    smtp.close()
