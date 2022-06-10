@@ -90,7 +90,7 @@ def isDuplicate(email):
 mxf = 100000
 
 
-def validation(email, arg):
+def validation(file, email, arg):
     isCorrect = False
     result = ''
     if isDuplicate(email):
@@ -119,4 +119,4 @@ def validation(email, arg):
     cond = str(isCorrect)
     if isCorrect:
         cond = cond + " "
-    print("#", cond, '(' + result + ')', email)
+    print("#", cond, '(' + result + ')', email, file)

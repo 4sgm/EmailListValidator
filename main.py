@@ -32,7 +32,7 @@ if __name__ == '__main__':
                 f = open(filepath, "r")
                 for email in f:
                     email = str(email).replace(' ', '').replace('\n', '')
-                    t = Thread(target=validation, args=(email, 1))
+                    t = Thread(target=validation, args=(filename, email, 1))
                     t.start()
                 f.close()
 
