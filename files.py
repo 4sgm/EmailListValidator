@@ -25,4 +25,3 @@ def files():
 if __name__ == '__main__':
     from waitress import serve
     serve(app, host="0.0.0.0", port=8585)
-    # send_mail(subject="test", text="Hi", files=["result.txt"])
