@@ -1,13 +1,14 @@
 
 
-from itertools import count
 import os
+from natsort import natsorted
 
 allEmails = []
 mxf = 100000
 count = 0
 if __name__ == '__main__':
     files = os.listdir('outputs/')
+    files = natsorted(files)
     for file in files:
         filepath = 'outputs/' + file
         f = open(filepath, "r")
