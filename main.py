@@ -29,7 +29,7 @@ if __name__ == '__main__':
         file_extension = file_extension.lower()
         if file_extension == ".txt":
             try:
-                f = open(filepath, "r")
+                f = open(filepath, "r", encoding="ISO-8859-1")
                 for email in f:
                     email = str(email).replace(' ', '').replace('\n', '')
                     t = Thread(target=validation, args=(filename, email, 1))
