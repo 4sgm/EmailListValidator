@@ -9,7 +9,7 @@ app = Flask(__name__)
 
 
 @app.route("/outputs", methods=["GET"])
-def files():
+def outputs():
     ts = int(datetime.datetime.now().timestamp())
     fn = "outputs-" + str(ts) + ".zip"
     zf = zipfile.ZipFile(fn, "w")
@@ -23,7 +23,7 @@ def files():
 
 
 @app.route("/removeDup", methods=["GET"])
-def files():
+def removeDup():
     ts = int(datetime.datetime.now().timestamp())
     fn = "removeDup-" + str(ts) + ".zip"
     zf = zipfile.ZipFile(fn, "w")
