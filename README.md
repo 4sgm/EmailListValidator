@@ -15,4 +15,4 @@ python main.py 1 1
 EmailListValidator is an Open Source tool that uses Python to check email syntax.
 
 ## Screenshot
-![Commandline](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/screenshot.PNG)
+![Commandline](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/screenshot.png)
