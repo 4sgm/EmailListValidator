@@ -1,15 +1,3 @@
-## Installation
-
-```bash
-pip install -r requirements.txt
-```
-
-## Usage
-
-```bash
-python main.py 1 1
-```
-
 ## Description
 
 EmailListValidator is an Open Source tool that uses Python to validate email addresses from a file line by line, using threads for concurrent processing. It performs basic syntax checks, MX record lookups, and temporary SMTP connections for verification. It checks for duplicates before validation to avoid redundant processing.
@@ -21,3 +9,20 @@ EmailListValidator performs the following checks:
 
 ## Screenshot
 ![Commandline](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/screenshot.png)
+
+## Installation
+
+```bash
+pip install -r requirements.txt
+```
+
+## Instruction
+1. Replace email on helper.py Line 13 to your email address before running the program.
+2. Set debug level to 0 if you want a clean output, change it to 1 if you want to see detailed error messages.
+3. Replace test emails on input folder.
+
+## Usage
+
+```bash
+python main.py 1 1
+```
