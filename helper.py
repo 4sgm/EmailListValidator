@@ -37,13 +37,13 @@ def check(emailAddress):
 
         # Connect to the mail exchange server using smtplib. SMTP lib setup (use debug level for full output)
         server = smtplib.SMTP(timeout=2)
-        server.set_debuglevel(1) # Change to 1 for detailed debug output
-
+        server.set_debuglevel(0) # Set to 0 for cleaner output, change to 1 for detailed debug output
+        
         # SMTP Conversation handshake with the server
         server.connect(mxRecord)
 
         # server.local_hostname(Get local server hostname)  # Commented out, purpose unclear
-        # server.helo(server.local_hostname)
+        server.helo(server.local_hostname)
         server.mail(fromAddress)
         code, message = server.rcpt(emailAddress)
         server.quit()
