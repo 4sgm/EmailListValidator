@@ -1,4 +1,4 @@
-
+ to
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -37,7 +37,7 @@ def check(emailAddress):
 
         # Connect to the mail exchange server using smtplib. SMTP lib setup (use debug level for full output)
         server = smtplib.SMTP(timeout=2)
-        server.set_debuglevel(1) # Change to 1 for detailed debug output
+        server.set_debuglevel(1) # Set to 0 for cleaner output, change to 1 for detailed debug output
 
         # SMTP Conversation handshake with the server
         server.connect(mxRecord)
