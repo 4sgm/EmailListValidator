@@ -1,4 +1,4 @@
- to
+
 from email.mime.application import MIMEApplication
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -9,82 +9,72 @@ import smtplib
 import dns.resolver
 
 
-# Address used for sending emails (replace with your address)
+# Address used for SMTP MAIL FROM command
 fromAddress = 'r.ahmadifar.1377@gmail.com'
 
-# Simple Regex for email syntax validation
+# Simple Regex for syntax checking
 regex = '^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,})$'
 
 
 def check(emailAddress):
 
     try:
-        # Check syntax using the defined regular expression
+        # Syntax check
         match = re.match(regex, emailAddress)
         if match == None:
             return False
 
-        # Extract domain name from the email address for DNS lookup 
-
+        # Get domain for DNS lookup
         splitAddress = emailAddress.split('@')
         domain = str(splitAddress[1])
 
-        # Perform MX record lookup to find the mail exchange server for the domain
-
+        # MX record lookup
         records = dns.resolver.resolve(domain, 'MX')
         mxRecord = records[0].exchange
         mxRecord = str(mxRecord)
 
-        # Connect to the mail exchange server using smtplib. SMTP lib setup (use debug level for full output)
+        # SMTP lib setup (use debug level for full output)
         server = smtplib.SMTP(timeout=2)
-        server.set_debuglevel(1) # Set to 0 for cleaner output, change to 1 for detailed debug output
+        server.set_debuglevel(0)
 
-        # SMTP Conversation handshake with the server
+        # SMTP Conversation
         server.connect(mxRecord)
 
-        # server.local_hostname(Get local server hostname)  # Commented out, purpose unclear
-        # server.helo(server.local_hostname)
+        # server.local_hostname(Get local server hostname)
+        server.helo(server.local_hostname)
         server.mail(fromAddress)
         code, message = server.rcpt(emailAddress)
         server.quit()
 
-        # Assuming a successful response code (250) indicates a valid email address
-
+        # Assume SMTP response 250 is success
         if code == 250:
             return True
         else:
             return False
     except KeyError:
-        return False # Likely DNS lookup error
+        return False
     except Exception as e:
-        return False # Catch any other exceptions
+        return False
 
 
 def saveResult(correct):
-    # Open "result.txt" for reading and writing
     frw = open("result.txt", "r+")
-    # Read current total and correct counts
     nums = frw.read().split("/")
     tot = int(nums[1])
     cur = int(nums[0])
-    # Update total count
     tot += 1
-    # Update correct count if the email is valid
     if correct:
         cur += 1
-      # Write updated counts back to the file
     dw = str(cur) + "/" + str(tot)
     frw.seek(0)
     frw.write(dw)
     frw.close()
-    # Return the updated result string and current correct count
+
     return dw, cur
 
 
-def saveOutputs(fc, email):  
-    # Open a CSV file for appending valid emails
+def saveOutputs(fc, email):
     frw = open("./outputs/valid " + fc + ".csv", "a")
-    # Write the email
     frw.write(email + "\n")
     frw.close()
 
