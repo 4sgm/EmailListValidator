@@ -26,3 +26,10 @@ pip install -r requirements.txt
 ```bash
 python main.py 1 1
 ```
+## Result Sample
+-**all.txt** List of tested emails
+-**result.txt** Progress
+-**valid [0-100000].csv** Validated emails
+![all-txt](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/all_txt.png)
+![result-txt](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/result_txt.png)
+![valid_[0-100000]_csv.png](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/valid_[0-100000]_csv.png)
