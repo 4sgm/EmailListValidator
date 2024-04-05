@@ -8,7 +8,7 @@ EmailListValidator performs the following checks:
 - **SMTP Conversation:** Establishes a temporary SMTP connection to the MX server. Sends commands to check if the email address is accepted by the server. (Note: This doesn't guarantee deliverability, but indicates a valid mailbox might exist.)
 
 ## Screenshot
-![Commandline](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/screenshot.png)
+![Commandline](https://github.com/ronknight/EmailListValidator/blob/v1/assets/images/screenshots/screenshot.png)
 
 ## Installation
 
@@ -29,12 +29,12 @@ python main.py 1 1
 ## Result Sample
 **1. all.txt** - List of tested emails
 
-![all](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/all_txt.png)
+![all](https://github.com/ronknight/EmailListValidator/blob/v1/assets/images/screenshots/all_txt.png)
 
 **2. result.txt** - Progress
 
-![result](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/result_txt.png)
+![result](https://github.com/ronknight/EmailListValidator/blob/v1/assets/images/screenshots/result_txt.png)
 
 **3. valid [0-100000].csv** - Validated emails
 
-![valid](https://github.com/ronknight/EmailListValidator/blob/master/assets/images/screenshots/valid_[0-100000]_csv.png)
+![valid](https://github.com/ronknight/EmailListValidator/blob/v1/assets/images/screenshots/valid_[0-100000]_csv.png)
