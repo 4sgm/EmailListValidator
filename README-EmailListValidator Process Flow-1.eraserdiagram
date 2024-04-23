@@ -1,0 +1,26 @@
+flowchart-diagram
+
+
+title EmailListValidator Process Flow
+
+// Define nodes and relationships
+Start [shape: oval, icon: flag] > Read email file line by line [icon: file-text]
+Read email file line by line > Check for duplicates [shape: diamond, icon: copy]
+Check for duplicates > Perform syntax check [icon: edit]: No
+Perform syntax check > Perform MX record lookup [icon: globe]
+Perform MX record lookup > Establish SMTP conversation [icon: mail]
+Establish SMTP conversation > Validate email [shape: oval, icon: check-circle]
+Check for duplicates > Skip validation [shape: oval, icon: skip-forward]: Yes
+Validate email > Write results to output file [icon: file-text]
+Write results to output file > End [shape: oval, icon: check]
+
+// Define Groups
+For each email in the file [icon: repeat] {
+  Check for duplicates
+  Perform syntax check
+  Perform MX record lookup
+  Establish SMTP conversation
+  Validate email
+  Write results to output file
+}
+
